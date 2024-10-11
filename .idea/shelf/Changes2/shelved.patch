@@ -1,0 +1,262 @@
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>rootProject.name = 'AQALessons'\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle b/settings.gradle
+--- a/settings.gradle	(revision 82dda781ba6a10dace1b59b4c88a316d7c0ae1c1)
++++ b/settings.gradle	(date 1728225256353)
+@@ -1,2 +1,4 @@
+ rootProject.name = 'AQALessons'
++include 'src:main:Animal'
++findProject(':src:main:Animal')?.name = 'Animal'
+ 
+Index: src/main/Animal/src/main/java/org/example/Animals.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/Animal/src/main/java/org/example/Animals.java b/src/main/Animal/src/main/java/org/example/Animals.java
+new file mode 100644
+--- /dev/null	(date 1728233434992)
++++ b/src/main/Animal/src/main/java/org/example/Animals.java	(date 1728233434992)
+@@ -0,0 +1,22 @@
++package org.example;
++
++public abstract class Animals {
++    protected static int animalsCount = 0;
++
++    public Animals() {
++        animalsCount++; // Увеличиваем счетчик при создании нового животного
++    }
++
++    public static int getAnimalsCount() {
++        return animalsCount; // Метод для получения общего количества животных
++    }
++
++    public void run(int distance) {
++        System.out.println("Животное пробежало " + distance + " м.");
++    }
++
++    public void swim(int distance) {
++        System.out.println("Животное проплыло " + distance + " м.");
++    }
++}
++}
+Index: src/main/Animal/src/main/java/org/example/Cat.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/Animal/src/main/java/org/example/Cat.java b/src/main/Animal/src/main/java/org/example/Cat.java
+new file mode 100644
+--- /dev/null	(date 1728236174708)
++++ b/src/main/Animal/src/main/java/org/example/Cat.java	(date 1728236174708)
+@@ -0,0 +1,32 @@
++package org.example;
++
++public class Cat extends Animals {
++
++        private static int catCount = 0; // Количество котов
++        private String name;
++
++        public Cat(String name) {
++            super(); // Вызов конструктора родительского класса
++            this.name = name;
++            catCount++; // Увеличиваем счетчик котов
++        }
++
++        public static int getCatCount() {
++            return catCount; // Метод для получения количества котов
++        }
++
++        @Override
++        public void run(int distance) {
++            if (distance <= 200) {
++                System.out.println(name + " пробежал " + distance + " м.");
++            } else {
++                System.out.println(name + " не может пробежать больше 200 м.");
++            }
++        }
++
++        @Override
++        public void swim(int distance) {
++            System.out.println(name + " не умеет плавать."); // Коты не умеют плавать
++        }
++    }
++}
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"11\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 82dda781ba6a10dace1b59b4c88a316d7c0ae1c1)
++++ b/.idea/misc.xml	(date 1728225292287)
+@@ -1,6 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="FrameworkDetectionExcludesConfiguration">
++    <file type="web" url="file://$PROJECT_DIR$" />
++  </component>
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"e8d39299-019a-48c8-a283-37027db840d1\" name=\"Changes\" comment=\"Lesson_10\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;Sasha1323&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/Sasha1323/AQALessons.git&quot;,\n    &quot;accountId&quot;: &quot;0838eeb5-5647-4f23-b314-7c7d5703cb71&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 3\n}</component>\n  <component name=\"ProjectId\" id=\"2mRWg3qbGsPzIeTyM2SAFjyeaPF\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Gradle.AQALessons [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,\n    &quot;Gradle.AQALessons [:org.example.Park.main()].executor&quot;: &quot;Run&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;Lesson__10&quot;,\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/macbookair/IdeaProjects/AQALessons/src/main/java/org/example/Main.java&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.Main\" />\n      <module name=\"AQALessons.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"org.example.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.Main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142\" />\n        <option value=\"bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"e8d39299-019a-48c8-a283-37027db840d1\" name=\"Changes\" comment=\"\" />\n      <created>1727039979024</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1727039979024</updated>\n      <workItem from=\"1727039980015\" duration=\"5000\" />\n      <workItem from=\"1728037665478\" duration=\"408000\" />\n      <workItem from=\"1728040541185\" duration=\"1725000\" />\n      <workItem from=\"1728055725581\" duration=\"3375000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Lesson_5: Work with cycles\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1728036068856</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1728036068856</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Lesson_10\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1728036150780</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1728036150780</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Lesson_10\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1728037002677</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1728037002677</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Lesson_5: Work with cycles\" />\n    <MESSAGE value=\"Lesson_10\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Lesson_10\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 82dda781ba6a10dace1b59b4c88a316d7c0ae1c1)
++++ b/.idea/workspace.xml	(date 1728233679788)
+@@ -5,12 +5,22 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="e8d39299-019a-48c8-a283-37027db840d1" name="Changes" comment="Lesson_10">
++      <change afterPath="$PROJECT_DIR$/src/main/Animal/src/main/java/org/example/Animals.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/Animal/src/main/java/org/example/Cat.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="ExternalProjectsData">
++    <projectState path="$PROJECT_DIR$">
++      <ProjectState />
++    </projectState>
+   </component>
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+@@ -22,7 +32,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="master" />
++        <entry key="$PROJECT_DIR$" value="Lesson_10" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -33,6 +43,16 @@
+     &quot;assignee&quot;: &quot;Sasha1323&quot;
+   }
+ }</component>
++  <component name="GitRewordedCommitMessages">
++    <option name="commitMessagesMapping">
++      <RewordedCommitMessageMapping>
++        <option name="originalMessage" value="Lesson_10" />
++        <option name="rewordedMessage" value="Lesson_10" />
++      </RewordedCommitMessageMapping>
++    </option>
++    <option name="currentCommit" value="1" />
++    <option name="onto" value="f2d80cf6107333562b7ea5c67029cd4e23c1f30a" />
++  </component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/Sasha1323/AQALessons.git&quot;,
+@@ -50,22 +70,25 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Gradle.AQALessons [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+-    &quot;Gradle.AQALessons [:org.example.Park.main()].executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;Lesson__10&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/macbookair/IdeaProjects/AQALessons/src/main/java/org/example/Main.java&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Gradle.AQALessons [:org.example.Main.main()].executor": "Run",
++    "Gradle.AQALessons [:org.example.Park.main()].executor": "Run",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "git-widget-placeholder": "Lesson__11",
++    "kotlin-language-version-configured": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "onboarding.tips.debug.path": "/Users/macbookair/IdeaProjects/AQALessons/src/main/Animal/src/main/java/org/example/Main.java",
++    "project.structure.last.edited": "Modules",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager">
+     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+@@ -131,7 +154,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1728037002677</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL-00004" summary="Lesson_10">
++      <option name="closed" value="true" />
++      <created>1728220769750</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1728220769750</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleHome\" value=\"\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n          </set>\n        </option>\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 82dda781ba6a10dace1b59b4c88a316d7c0ae1c1)
++++ b/.idea/gradle.xml	(date 1728225292296)
+@@ -9,6 +9,9 @@
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/src" />
++            <option value="$PROJECT_DIR$/src/main" />
++            <option value="$PROJECT_DIR$/src/main/Animal" />
+           </set>
+         </option>
+       </GradleProjectSettings>
+Index: src/main/Animal/src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/Animal/src/main/java/org/example/Main.java b/src/main/Animal/src/main/java/org/example/Main.java
+new file mode 100644
+--- /dev/null	(date 1728233356200)
++++ b/src/main/Animal/src/main/java/org/example/Main.java	(date 1728233356200)
+@@ -0,0 +1,6 @@
++package org.example;
++public class Main {
++    public static void main(String[] args) {
++
++    }
++}

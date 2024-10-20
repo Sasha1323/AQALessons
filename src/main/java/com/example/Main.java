@@ -1,5 +1,5 @@
-package org.example;
-import static org.example.FactorialCalculator.factorial;
+package com.example;
+import static com.example.FactorialCalculator.factorial;
 
 public class Main {
     public static void main(String[] args) {
